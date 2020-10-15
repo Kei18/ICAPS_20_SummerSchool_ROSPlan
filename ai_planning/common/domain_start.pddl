@@ -15,11 +15,12 @@
 (:functions
     (distance ?a - wp ?b - wp)
     (manipulate_box_cost)
+    (speed ?robot - robot)
 )
 
 (:durative-action move
  :parameters (?robot - robot ?from - wp ?to - wp)
- :duration (= ?duration 3)
+ :duration (= ?duration (/ (distance ?from ?to) (speed ?robot)))
  :condition (and
     (at start (robot_at_wp ?robot ?from))
     )
